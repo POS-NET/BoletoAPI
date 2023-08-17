@@ -4,6 +4,6 @@ namespace BoletoAPI.Domain.Interfaces
 {
     public interface IBoleto
     {
-        Task<string> RetornarHTML(DadosBoleto dadosBoleto);
+        string RetornarHTML(DadosBoleto dadosBoleto);
     }
 }

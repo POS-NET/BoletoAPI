@@ -9,6 +9,8 @@
         public string NumeroDocumento { get; private set; } = string.Empty;
         public string? CampoLivre { get; private set; }
         public decimal Valor { get; private set; } = decimal.Zero;
+        public DateTime DataEmissao { get; private set; } = DateTime.MinValue;
+        public DateTime DataProcessamento { get; private set; } = DateTime.MinValue;
 
         // Propriedades de navegação publica
         public Sacado Sacado { get; private set; }
@@ -19,16 +21,16 @@
 
         #region Construtores
 
-        public DadosBoleto(string nossoNumero, DateTime vencimento, string numeroDocumento, decimal valor)
+        public DadosBoleto(string nossoNumero, DateTime vencimento, string numeroDocumento, decimal valor, DateTime dataEmissao, DateTime dataProcessamento)
         {
-            ValidacaoEntidade(nossoNumero, vencimento, numeroDocumento, valor);
+            ValidacaoEntidade(nossoNumero, vencimento, numeroDocumento, valor, dataEmissao, dataProcessamento);
         }
 
         #endregion Construtores
 
         #region Métodos
 
-        private void ValidacaoEntidade(string nossoNumero, DateTime vencimento, string numeroDocumento, decimal valor)
+        private void ValidacaoEntidade(string nossoNumero, DateTime vencimento, string numeroDocumento, decimal valor, DateTime dataEmissao, DateTime dataProcessamento)
         {
             if (string.IsNullOrEmpty(nossoNumero))
                 throw new ArgumentException($"{nameof(NossoNumero)} inválido: Campo obrigatório.");
@@ -42,10 +44,18 @@
             if (valor <= 10)
                 throw new ArgumentException($"{nameof(Valor)} deve ser maior do que R$ 10,00.");
 
+            if (dataEmissao == DateTime.MinValue)
+                throw new ArgumentException($"{nameof(DataEmissao)} inválido: Data {dataEmissao} não esta no formato correto.");
+
+            if (dataProcessamento == DateTime.MinValue)
+                throw new ArgumentException($"{nameof(DataProcessamento)} inválido: Data {dataProcessamento} não esta no formato correto.");
+
+
             NossoNumero = nossoNumero;
             Vencimento = vencimento;
             NumeroDocumento = numeroDocumento;
             Valor = valor;
+            DataEmissao = dataEmissao;
         }
 
         #endregion Métodos

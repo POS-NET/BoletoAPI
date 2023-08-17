@@ -1,6 +1,6 @@
 ﻿namespace BoletoAPI.Domain.Entities
 {
-    public sealed class Endereco : Base
+    public sealed class DadosEndereco : Base
     {
         #region Propriedades
 
@@ -15,7 +15,7 @@
 
         #region Contrutores
 
-        public Endereco(string cep, string logradouro, string numero, string bairro, string cidade, string estado)
+        public DadosEndereco(string cep, string logradouro, string numero, string bairro, string cidade, string estado)
         {
             ValidacaoEntidade(cep, logradouro, numero, bairro, cidade, estado);
         }

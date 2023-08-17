@@ -4,11 +4,11 @@
     {
         #region Propriedades
 
-        public string Nome { get; set; } = string.Empty;
-        public string Cpf { get; set; } = string.Empty;
+        public string Nome { get; private set; } = string.Empty;
+        public string Cpf { get; private set; } = string.Empty;
 
         // Propriedades de navegação
-        public Endereco? Endereco { get; set; }
+        public DadosEndereco Endereco { get; private set; }
 
         #endregion Propriedades
 
