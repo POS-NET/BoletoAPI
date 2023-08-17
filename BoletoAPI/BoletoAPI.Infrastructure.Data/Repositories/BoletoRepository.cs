@@ -17,11 +17,9 @@ namespace BoletoAPI.Infrastructure.Data.Repositories
         {
             #region Dados do beneficiaio
 
-            DadosBeneficiario beneficiario = new DadosBeneficiario(dadosBoleto.Beneficiario.Codigo, dadosBoleto.Beneficiario.CodigoDV, dadosBoleto.Beneficiario.CodigoFormatado, dadosBoleto.Beneficiario.CodigoTransmissao, dadosBoleto.Beneficiario.CPFCNPJ, dadosBoleto.Beneficiario.Nome, dadosBoleto.Beneficiario.Observacoes);
-
             // Mapeamento de objetos
-            _iBanco.Beneficiario.CPFCNPJ = beneficiario.CPFCNPJ;
-            _iBanco.Beneficiario.Nome = beneficiario.Nome;
+            _iBanco.Beneficiario.CPFCNPJ = dadosBoleto.Beneficiario.CPFCNPJ;
+            _iBanco.Beneficiario.Nome = dadosBoleto.Beneficiario.Nome;
 
             // Dados bancário da conta do beneficiário
             _iBanco.Beneficiario.ContaBancaria.Agencia = dadosBoleto.Beneficiario.ContaBancaria.Agencia;
@@ -61,8 +59,6 @@ namespace BoletoAPI.Infrastructure.Data.Repositories
 
         private static Pagador GerarPagador(DadosBoleto dadosBoleto)
         {
-            DadosEndereco endereco = new DadosEndereco(dadosBoleto.Sacado.Endereco.CEP, dadosBoleto.Sacado.Endereco.Logradouro, dadosBoleto.Sacado.Endereco.Numero, dadosBoleto.Sacado.Endereco.Bairro, dadosBoleto.Sacado.Endereco.Cidade, dadosBoleto.Sacado.Endereco.Estado);
-
             return new Pagador
             {
                 Nome = dadosBoleto.Sacado.Nome,
@@ -70,12 +66,12 @@ namespace BoletoAPI.Infrastructure.Data.Repositories
 
                 Endereco = new Endereco
                 {
-                    LogradouroEndereco = endereco.Logradouro,
-                    LogradouroNumero = endereco.Numero,
-                    Bairro = endereco.Bairro,
-                    Cidade = endereco.Cidade,
-                    UF = endereco.Estado,
-                    CEP = endereco.CEP
+                    LogradouroEndereco = dadosBoleto.Sacado.Endereco.Logradouro,
+                    LogradouroNumero = dadosBoleto.Sacado.Endereco.Numero,
+                    Bairro = dadosBoleto.Sacado.Endereco.Bairro,
+                    Cidade = dadosBoleto.Sacado.Endereco.Cidade,
+                    UF = dadosBoleto.Sacado.Endereco.Estado,
+                    CEP = dadosBoleto.Sacado.Endereco.CEP
                 }
             };
         }
