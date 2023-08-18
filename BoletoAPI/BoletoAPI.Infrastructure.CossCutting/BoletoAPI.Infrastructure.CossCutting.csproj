@@ -6,4 +6,15 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="6.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BoletoAPI.Application\BoletoAPI.Application.csproj" />
+    <ProjectReference Include="..\BoletoAPI.Domain\BoletoAPI.Domain.csproj" />
+    <ProjectReference Include="..\BoletoAPI.Infrastructure.Data\BoletoAPI.Infrastructure.Data.csproj" />
+  </ItemGroup>
+
 </Project>

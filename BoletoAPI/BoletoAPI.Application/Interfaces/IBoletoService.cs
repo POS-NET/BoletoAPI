@@ -1,6 +1,9 @@
-﻿namespace BoletoAPI.Application.Interfaces
+﻿using BoletoAPI.Application.DTOs;
+
+namespace BoletoAPI.Application.Interfaces
 {
-    internal interface IBoletoService
+    public interface IBoletoService
     {
+        Task<string> GerarHTMLBoleto(DadosBoletoDTO dadosBoletoDTO);
     }
 }
