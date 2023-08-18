@@ -4,7 +4,7 @@ using BoletoNetCore;
 
 namespace BoletoAPI.Infrastructure.Data.Repositories
 {
-    public class BoletoRepository : IBoleto
+    public class BoletoRepository : IBoletoRepository
     {
         private readonly IBanco _iBanco;
 

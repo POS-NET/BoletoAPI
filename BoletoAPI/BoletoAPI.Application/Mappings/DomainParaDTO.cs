@@ -1,6 +1,14 @@
-﻿namespace BoletoAPI.Application.Mappings
+﻿using AutoMapper;
+using BoletoAPI.Application.DTOs;
+using BoletoAPI.Domain.Entities;
+
+namespace BoletoAPI.Application.Mappings
 {
-    internal class DomainParaDTO
+    public class DomainParaDTO : Profile
     {
+        public DomainParaDTO()
+        {
+            CreateMap<DadosBoleto, DadosBoletoDTO>().ReverseMap();
+        }
     }
 }
