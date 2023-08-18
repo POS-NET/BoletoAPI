@@ -11,8 +11,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04 - Infrastructure", "04 -
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01 - Presentation", "01 - Presentation", "{B729659E-9B36-4A9A-9750-264B4159887D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BoletoAPI.Apresentation.WebAPI", "BoletoAPI.WebAPI\BoletoAPI.Apresentation.WebAPI.csproj", "{3FC25C12-0BB8-41CD-AFD1-21BD76E44F33}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BoletoAPI.Application", "BoletoAPI.Application\BoletoAPI.Application.csproj", "{BC599347-AF51-46D2-9177-C29BB346C397}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BoletoAPI.Domain", "BoletoAPI.Domain\BoletoAPI.Domain.csproj", "{ACABECBB-9BC3-4334-9A4A-5531885C56C6}"
@@ -21,7 +19,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BoletoAPI.Domain.Tests", "B
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BoletoAPI.Infrastructure.Data", "BoletoAPI.Infrastructure.Data\BoletoAPI.Infrastructure.Data.csproj", "{4D5CA6D3-BC4E-4AAA-802F-7BFFA1FAB13D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoletoAPI.Infrastructure.CossCutting", "BoletoAPI.Infrastructure.CossCutting\BoletoAPI.Infrastructure.CossCutting.csproj", "{4DA17F9B-4666-4699-AC86-CB8408D53F46}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BoletoAPI.Infrastructure.CossCutting", "BoletoAPI.Infrastructure.CossCutting\BoletoAPI.Infrastructure.CossCutting.csproj", "{4DA17F9B-4666-4699-AC86-CB8408D53F46}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BoletoAPI.Apresentation.WebAPI", "BoletoAPI.Presentation.WebAPI\BoletoAPI.Apresentation.WebAPI.csproj", "{2B856C57-2213-49AB-B362-DA1A3B6865B1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +29,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{3FC25C12-0BB8-41CD-AFD1-21BD76E44F33}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3FC25C12-0BB8-41CD-AFD1-21BD76E44F33}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3FC25C12-0BB8-41CD-AFD1-21BD76E44F33}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3FC25C12-0BB8-41CD-AFD1-21BD76E44F33}.Release|Any CPU.Build.0 = Release|Any CPU
 		{BC599347-AF51-46D2-9177-C29BB346C397}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{BC599347-AF51-46D2-9177-C29BB346C397}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BC599347-AF51-46D2-9177-C29BB346C397}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -53,17 +49,21 @@ Global
 		{4DA17F9B-4666-4699-AC86-CB8408D53F46}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4DA17F9B-4666-4699-AC86-CB8408D53F46}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4DA17F9B-4666-4699-AC86-CB8408D53F46}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B856C57-2213-49AB-B362-DA1A3B6865B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B856C57-2213-49AB-B362-DA1A3B6865B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B856C57-2213-49AB-B362-DA1A3B6865B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B856C57-2213-49AB-B362-DA1A3B6865B1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{3FC25C12-0BB8-41CD-AFD1-21BD76E44F33} = {B729659E-9B36-4A9A-9750-264B4159887D}
 		{BC599347-AF51-46D2-9177-C29BB346C397} = {7BA2F7BE-2CBB-4884-845D-A730366243DE}
 		{ACABECBB-9BC3-4334-9A4A-5531885C56C6} = {F5D8BFF5-B63B-4A28-A05E-0E4846F57370}
 		{49593841-3DFA-4B17-BAF1-7868CA9ED9FD} = {F5D8BFF5-B63B-4A28-A05E-0E4846F57370}
 		{4D5CA6D3-BC4E-4AAA-802F-7BFFA1FAB13D} = {B20E3238-AF29-4A67-BEB6-6E04AD186FAB}
 		{4DA17F9B-4666-4699-AC86-CB8408D53F46} = {B20E3238-AF29-4A67-BEB6-6E04AD186FAB}
+		{2B856C57-2213-49AB-B362-DA1A3B6865B1} = {B729659E-9B36-4A9A-9750-264B4159887D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7453758F-44B1-4EF7-91BE-21470EFCB501}
