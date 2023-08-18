@@ -14,7 +14,7 @@
         public bool MostrarCnpj { get; private set; } = false;
 
         // Propriedade de navegação
-        public ContaBancaria ContaBancaria { get; private set; } 
+        public ContaBancaria ContaBancaria { get; private set; }
 
         #endregion Propriedades
 
@@ -31,7 +31,7 @@
 
         private void ValidacaoEntidade(string codigo, string codigoDV, string codigoFormatado, string codigoTransmissao, string cpfCnpj, string nome, string observacoes)
         {
-            if(cpfCnpj != null)
+            if (cpfCnpj != null)
                 cpfCnpj.Replace(".", string.Empty).Replace("-", string.Empty);
 
             if (string.IsNullOrWhiteSpace(codigo))
