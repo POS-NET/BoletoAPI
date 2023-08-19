@@ -16,6 +16,7 @@ namespace BoletoAPI.Infrastructure.CossCutting
             #region Repositórios
 
             services.AddScoped<IBoletoRepository, BoletoRepository>();
+            //services.AddScoped<IBanco, Banco>();
 
             #endregion Repositórios
 

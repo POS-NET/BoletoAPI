@@ -8,11 +8,14 @@ namespace BoletoAPI.Infrastructure.Data.Repositories
     {
         private IBanco _iBanco;
 
+        public BoletoRepository(IBanco iBanco)
+        {
+            _iBanco = iBanco;
+        }
+
         public string RetornarHTML(DadosBoleto dadosBoleto)
         {
             ObterTipoBanco(dadosBoleto);
-
-            //_iBanco = Banco.Instancia(Bancos.Itau);
 
             PreencherDadosBeneficiario(dadosBoleto.Beneficiario);
             _iBanco.FormataBeneficiario();
@@ -30,41 +33,57 @@ namespace BoletoAPI.Infrastructure.Data.Repositories
                 case "BancoDoBrasil":
                     _iBanco = Banco.Instancia(Bancos.BancoDoBrasil);
                     break;
+
                 case "BancoDoNordeste":
                     _iBanco = Banco.Instancia(Bancos.BancoDoNordeste);
                     break;
+
                 case "Santander":
                     _iBanco = Banco.Instancia(Bancos.Santander);
                     break;
+
                 case "Banrisul":
                     _iBanco = Banco.Instancia(Bancos.Banrisul);
                     break;
+
                 case "UniprimeNortePR":
                     _iBanco = Banco.Instancia(Bancos.UniprimeNortePR);
                     break;
+
                 case "Cecred":
                     _iBanco = Banco.Instancia(Bancos.Cecred);
                     break;
+
                 case "Caixa":
                     _iBanco = Banco.Instancia(Bancos.Caixa);
                     break;
+
                 case "Bradesco":
                     _iBanco = Banco.Instancia(Bancos.Bradesco);
                     break;
+
                 case "Safra":
                     _iBanco = Banco.Instancia(Bancos.Safra);
                     break;
+
                 case "Sicredi":
                     _iBanco = Banco.Instancia(Bancos.Sicredi);
                     break;
+
                 case "Sicoob":
                     _iBanco = Banco.Instancia(Bancos.Sicoob);
                     break;
+
                 case "CrediSIS":
                     _iBanco = Banco.Instancia(Bancos.CrediSIS);
                     break;
+
+                case "Itau":
+                    _iBanco = Banco.Instancia(Bancos.Itau);
+                    break;
+
                 default:
-                    throw new ArgumentException($"o Tipo do banco não pode ser nulo.");
+                    throw new ArgumentException($"Banco não implementado.");
             }
         }
 
