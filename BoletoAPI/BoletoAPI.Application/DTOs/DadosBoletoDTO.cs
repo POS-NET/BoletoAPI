@@ -37,7 +37,9 @@ namespace BoletoAPI.Application.DTOs
         [Required(ErrorMessage = "Campo {0} é obrigatório.")]
         [DisplayName("Data Processamento")]
         public DateTime DataProcessamento { get; private set; } = DateTime.MinValue;
-
+        
+        [Required(ErrorMessage = "Campo {0} é obrigatório.")]
+        public string TipoBanco { get; set; } = string.Empty;
         #endregion Propriedades
 
         #region Propriedades de navegação

@@ -10,30 +10,74 @@ namespace BoletoAPI.Infrastructure.Data.Repositories
 
         public string RetornarHTML(DadosBoleto dadosBoleto)
         {
-            _iBanco = Banco.Instancia(Bancos.Itau);
+            ObterTipoBanco(dadosBoleto);
 
-            #region Dados do beneficiaio
+            //_iBanco = Banco.Instancia(Bancos.Itau);
 
-            // Mapeamento de objetos
-            _iBanco.Beneficiario.CPFCNPJ = dadosBoleto.Beneficiario.CPFCNPJ;
-            _iBanco.Beneficiario.Nome = dadosBoleto.Beneficiario.Nome;
+            PreencherDadosBeneficiario(dadosBoleto.Beneficiario);
+            _iBanco.FormataBeneficiario();
 
-            // Dados bancário da conta do beneficiário
-            _iBanco.Beneficiario.ContaBancaria.Agencia = dadosBoleto.Beneficiario.ContaBancaria.Agencia;
-            _iBanco.Beneficiario.ContaBancaria.Conta = dadosBoleto.Beneficiario.ContaBancaria.Conta;
-            _iBanco.Beneficiario.ContaBancaria.CarteiraPadrao = dadosBoleto.Beneficiario.ContaBancaria.CarteiraPadrao;
+            var boleto = GerarLayoutBoleto(_iBanco, dadosBoleto);
+            var boletoBancario = new BoletoBancario { Boleto = boleto };
+
+            return boletoBancario.MontaHtmlEmbedded();
+        }
+
+        private void ObterTipoBanco(DadosBoleto dadosBoleto)
+        {
+            switch (dadosBoleto.TipoBanco)
+            {
+                case "BancoDoBrasil":
+                    _iBanco = Banco.Instancia(Bancos.BancoDoBrasil);
+                    break;
+                case "BancoDoNordeste":
+                    _iBanco = Banco.Instancia(Bancos.BancoDoNordeste);
+                    break;
+                case "Santander":
+                    _iBanco = Banco.Instancia(Bancos.Santander);
+                    break;
+                case "Banrisul":
+                    _iBanco = Banco.Instancia(Bancos.Banrisul);
+                    break;
+                case "UniprimeNortePR":
+                    _iBanco = Banco.Instancia(Bancos.UniprimeNortePR);
+                    break;
+                case "Cecred":
+                    _iBanco = Banco.Instancia(Bancos.Cecred);
+                    break;
+                case "Caixa":
+                    _iBanco = Banco.Instancia(Bancos.Caixa);
+                    break;
+                case "Bradesco":
+                    _iBanco = Banco.Instancia(Bancos.Bradesco);
+                    break;
+                case "Safra":
+                    _iBanco = Banco.Instancia(Bancos.Safra);
+                    break;
+                case "Sicredi":
+                    _iBanco = Banco.Instancia(Bancos.Sicredi);
+                    break;
+                case "Sicoob":
+                    _iBanco = Banco.Instancia(Bancos.Sicoob);
+                    break;
+                case "CrediSIS":
+                    _iBanco = Banco.Instancia(Bancos.CrediSIS);
+                    break;
+                default:
+                    throw new ArgumentException($"o Tipo do banco não pode ser nulo.");
+            }
+        }
+
+        private void PreencherDadosBeneficiario(DadosBeneficiario beneficiario)
+        {
+            _iBanco.Beneficiario.CPFCNPJ = beneficiario.CPFCNPJ;
+            _iBanco.Beneficiario.Nome = beneficiario.Nome;
+            _iBanco.Beneficiario.ContaBancaria.Agencia = beneficiario.ContaBancaria.Agencia;
+            _iBanco.Beneficiario.ContaBancaria.Conta = beneficiario.ContaBancaria.Conta;
+            _iBanco.Beneficiario.ContaBancaria.CarteiraPadrao = beneficiario.ContaBancaria.CarteiraPadrao;
             _iBanco.Beneficiario.ContaBancaria.TipoCarteiraPadrao = TipoCarteira.CarteiraCobrancaSimples;
             _iBanco.Beneficiario.ContaBancaria.TipoFormaCadastramento = TipoFormaCadastramento.ComRegistro;
             _iBanco.Beneficiario.ContaBancaria.TipoImpressaoBoleto = TipoImpressaoBoleto.Empresa;
-
-            #endregion Dados do beneficiaio
-
-            _iBanco.FormataBeneficiario();
-            var boleto = GerarLayoutBoleto(_iBanco, dadosBoleto);
-            var boletoBancario = new BoletoBancario();
-            boletoBancario.Boleto = boleto;
-
-            return boletoBancario.MontaHtmlEmbedded();
         }
 
         private Boleto GerarLayoutBoleto(IBanco iBanco, DadosBoleto dadosBoleto)

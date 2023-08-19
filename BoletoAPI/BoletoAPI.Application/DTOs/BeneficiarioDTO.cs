@@ -27,12 +27,12 @@ namespace BoletoAPI.Application.DTOs
         public string CodigoTransmissao { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "O campo {0} é obrigatório.")]
-        [Range(11, 14, ErrorMessage = "O campo {0} é inválido. Utilize 11 dígitos para CPF ou 14 para CNPJ.")]
+        //[Range(11, 14, ErrorMessage = "O campo {0} é inválido. Utilize 11 dígitos para CPF ou 14 para CNPJ.")]
         [DisplayName("CPF/CNPJ")]
         public string CPFCNPJ { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "O campo {0} é obrigatório.")]
-        [Range(10, 100, ErrorMessage = "O campo {0} é inválido. precisa ser pelo menos de 10 a 100 caracteres.")]
+        //[Range(10, 100, ErrorMessage = "O campo {0} é inválido. precisa ser pelo menos de 10 a 100 caracteres.")]
         [DisplayName("Nome")]
         public string Nome { get; set; } = string.Empty;
 

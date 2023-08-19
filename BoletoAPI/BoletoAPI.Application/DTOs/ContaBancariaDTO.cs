@@ -12,7 +12,6 @@ namespace BoletoAPI.Application.DTOs
         public int ContaBancariaDTOId { get; set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório.")]
-        [Range(4, 5, ErrorMessage = "O campo {0} deve ter um tamanho de 4 a 5 digitos.")]
         public string Agencia { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "O campo {0} é obrigatório.")]

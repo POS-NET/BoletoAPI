@@ -11,6 +11,7 @@
         public decimal Valor { get; private set; } = decimal.Zero;
         public DateTime DataEmissao { get; private set; } = DateTime.MinValue;
         public DateTime DataProcessamento { get; private set; } = DateTime.MinValue;
+        public string TipoBanco { get; set; } = string.Empty;
 
         // Propriedades de navegação publica
         public Sacado Sacado { get; private set; }
@@ -21,16 +22,16 @@
 
         #region Construtores
 
-        public DadosBoleto(string nossoNumero, DateTime vencimento, string numeroDocumento, decimal valor, DateTime dataEmissao, DateTime dataProcessamento)
+        public DadosBoleto(string nossoNumero, DateTime vencimento, string numeroDocumento, decimal valor, DateTime dataEmissao, DateTime dataProcessamento, string tipoBanco)
         {
-            ValidacaoEntidade(nossoNumero, vencimento, numeroDocumento, valor, dataEmissao, dataProcessamento);
+            ValidacaoEntidade(nossoNumero, vencimento, numeroDocumento, valor, dataEmissao, dataProcessamento, tipoBanco);
         }
 
         #endregion Construtores
 
         #region Métodos
 
-        private void ValidacaoEntidade(string nossoNumero, DateTime vencimento, string numeroDocumento, decimal valor, DateTime dataEmissao, DateTime dataProcessamento)
+        private void ValidacaoEntidade(string nossoNumero, DateTime vencimento, string numeroDocumento, decimal valor, DateTime dataEmissao, DateTime dataProcessamento, string tipoBanco)
         {
             if (string.IsNullOrEmpty(nossoNumero))
                 throw new ArgumentException($"{nameof(NossoNumero)} inválido: Campo obrigatório.");
@@ -50,12 +51,15 @@
             if (dataProcessamento == DateTime.MinValue)
                 throw new ArgumentException($"{nameof(DataProcessamento)} inválido: Data {dataProcessamento} não esta no formato correto.");
 
+            if (string.IsNullOrWhiteSpace(tipoBanco))
+                throw new ArgumentException($"{nameof(TipoBanco)} inválido, o campo {tipoBanco} é obrigatório.");
 
             NossoNumero = nossoNumero;
             Vencimento = vencimento;
             NumeroDocumento = numeroDocumento;
             Valor = valor;
             DataEmissao = dataEmissao;
+            TipoBanco = tipoBanco;
         }
 
         #endregion Métodos

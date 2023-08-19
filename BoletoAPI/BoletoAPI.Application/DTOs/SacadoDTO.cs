@@ -15,7 +15,6 @@ namespace BoletoAPI.Application.DTOs
         public string Nome { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "O campo {0} é obrigatório.")]
-        [Range(14, 14, ErrorMessage = "O campo {0} não pode ser diferente de 14 digitos.")]
         [DisplayName("CPF")]
         public string CPF { get; set; } = string.Empty;
 
