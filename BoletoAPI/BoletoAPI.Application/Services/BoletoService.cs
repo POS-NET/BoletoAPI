@@ -20,7 +20,7 @@ namespace BoletoAPI.Application.Services
         public async Task<string> GerarHTMLBoleto(DadosBoletoDTO dadosBoletoDTO)
         {
             var gerarHtml = _mapper.Map<DadosBoleto>(dadosBoletoDTO);
-            return await _iBoletoRepository.RetornarHTML(gerarHtml);
+            return _iBoletoRepository.RetornarHTML(gerarHtml);
         }
     }
 }
