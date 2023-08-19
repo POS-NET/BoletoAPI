@@ -22,6 +22,55 @@ namespace BoletoAPI.Application.Mappings
                 .ForMember(dest => dest.TipoBanco, opt => opt.MapFrom(src => src.TipoBanco));
 
             #endregion Dados do boleto
+
+            #region Beneficiários
+
+            CreateMap<BeneficiarioDTO, DadosBeneficiario>();
+
+            CreateMap<DadosBeneficiario, DadosBeneficiario>()
+                .ForMember(dest => dest.Codigo, opt => opt.MapFrom(src => src.Codigo))
+                .ForMember(dest => dest.CodigoDV, opt => opt.MapFrom(src => src.CodigoDV))
+                .ForMember(dest => dest.CodigoFormatado, opt => opt.MapFrom(src => src.CodigoFormatado))
+                .ForMember(dest => dest.CodigoTransmissao, opt => opt.MapFrom(src => src.CodigoTransmissao))
+                .ForMember(dest => dest.CPFCNPJ, opt => opt.MapFrom(src => src.CPFCNPJ))
+                .ForMember(dest => dest.Nome, opt => opt.MapFrom(src => src.Nome))
+                .ForMember(dest => dest.Observacoes, opt => opt.MapFrom(src => src.Observacoes));
+
+            #endregion Beneficiários
+
+            #region Conta Bancária
+
+            CreateMap<ContaBancariaDTO, ContaBancaria>();
+
+            CreateMap<ContaBancaria, ContaBancariaDTO>()
+                .ForMember(dest => dest.Agencia, opt => opt.MapFrom(src => src.Agencia))
+                .ForMember(dest => dest.Conta, opt => opt.MapFrom(src => src.Conta))
+                .ForMember(dest => dest.CarteiraPadrao, opt => opt.MapFrom(src => src.CarteiraPadrao));
+
+            #endregion Conta Bancária
+
+            #region Endereço
+
+            CreateMap<EnderecoDTO, DadosEndereco>();
+
+            CreateMap<DadosEndereco, EnderecoDTO>()
+               .ForMember(dest => dest.CEP, opt => opt.MapFrom(src => src.CEP))
+               .ForMember(dest => dest.Logradouro, opt => opt.MapFrom(src => src.Logradouro))
+               .ForMember(dest => dest.Numero, opt => opt.MapFrom(src => src.Numero))
+               .ForMember(dest => dest.Bairro, opt => opt.MapFrom(src => src.Bairro))
+               .ForMember(dest => dest.Cidade, opt => opt.MapFrom(src => src.Cidade))
+               .ForMember(dest => dest.Estado, opt => opt.MapFrom(src => src.Estado));
+
+            #endregion Endereço
+
+            #region Sacado
+
+            CreateMap<SacadoDTO, Sacado>();
+            CreateMap<Sacado, SacadoDTO>()
+                  .ForMember(dest => dest.Nome, opt => opt.MapFrom(src => src.Nome))
+                  .ForMember(dest => dest.CPF, opt => opt.MapFrom(src => src.Cpf));
+
+            #endregion Sacado
         }
     }
 }

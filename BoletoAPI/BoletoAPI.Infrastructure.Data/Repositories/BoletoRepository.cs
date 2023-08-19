@@ -1,6 +1,7 @@
 ﻿using BoletoAPI.Domain.Entities;
 using BoletoAPI.Domain.Interfaces;
 using BoletoNetCore;
+using System.Reflection.Metadata;
 
 namespace BoletoAPI.Infrastructure.Data.Repositories
 {
@@ -12,97 +13,90 @@ namespace BoletoAPI.Infrastructure.Data.Repositories
         {
         }
 
-        public string RetornarHTML(DadosBoleto dadosBoleto)
+        public string RetornarHTML(DadosBoleto dadosBoleto, DadosBeneficiario dadosBeneficiario, Domain.Entities.ContaBancaria contaBancaria, Sacado sacado, DadosEndereco endereco)
         {
-            ObterTipoBanco(dadosBoleto);
+            _iBanco = ObterTipoBanco(dadosBoleto);
 
-            PreencherDadosBeneficiario(dadosBoleto.Beneficiario);
+            _iBanco.Beneficiario = PreencherDadosBeneficiario(dadosBeneficiario, contaBancaria);
+
             _iBanco.FormataBeneficiario();
 
-            var boleto = GerarLayoutBoleto(_iBanco, dadosBoleto);
+            var boleto = GerarLayoutBoleto(_iBanco, dadosBoleto, sacado, endereco);
             var boletoBancario = new BoletoBancario { Boleto = boleto };
 
             return boletoBancario.MontaHtmlEmbedded();
         }
 
-        private void ObterTipoBanco(DadosBoleto dadosBoleto)
+        private IBanco ObterTipoBanco(DadosBoleto dadosBoleto)
         {
             switch (dadosBoleto.TipoBanco)
             {
                 case "BancoDoBrasil":
-                    _iBanco = Banco.Instancia(Bancos.BancoDoBrasil);
-                    break;
+                    return Banco.Instancia(Bancos.BancoDoBrasil);
 
                 case "BancoDoNordeste":
-                    _iBanco = Banco.Instancia(Bancos.BancoDoNordeste);
-                    break;
+                    return Banco.Instancia(Bancos.BancoDoNordeste);
 
                 case "Santander":
-                    _iBanco = Banco.Instancia(Bancos.Santander);
-                    break;
+                    return Banco.Instancia(Bancos.Santander);
 
                 case "Banrisul":
-                    _iBanco = Banco.Instancia(Bancos.Banrisul);
-                    break;
+                    return Banco.Instancia(Bancos.Banrisul);
 
                 case "UniprimeNortePR":
-                    _iBanco = Banco.Instancia(Bancos.UniprimeNortePR);
-                    break;
+                    return Banco.Instancia(Bancos.UniprimeNortePR);
 
                 case "Cecred":
-                    _iBanco = Banco.Instancia(Bancos.Cecred);
-                    break;
+                    return Banco.Instancia(Bancos.Cecred);
 
                 case "Caixa":
-                    _iBanco = Banco.Instancia(Bancos.Caixa);
-                    break;
+                    return Banco.Instancia(Bancos.Caixa);
 
                 case "Bradesco":
-                    _iBanco = Banco.Instancia(Bancos.Bradesco);
-                    break;
+                    return Banco.Instancia(Bancos.Bradesco);
 
                 case "Safra":
-                    _iBanco = Banco.Instancia(Bancos.Safra);
-                    break;
+                    return Banco.Instancia(Bancos.Safra);
 
                 case "Sicredi":
-                    _iBanco = Banco.Instancia(Bancos.Sicredi);
-                    break;
+                    return Banco.Instancia(Bancos.Sicredi);
 
                 case "Sicoob":
-                    _iBanco = Banco.Instancia(Bancos.Sicoob);
-                    break;
+                    return Banco.Instancia(Bancos.Sicoob);
 
                 case "CrediSIS":
-                    _iBanco = Banco.Instancia(Bancos.CrediSIS);
-                    break;
+                    Banco.Instancia(Bancos.CrediSIS);
+                    return Banco.Instancia(Bancos.CrediSIS);
 
                 case "Itau":
-                    _iBanco = Banco.Instancia(Bancos.Itau);
-                    break;
+                    return Banco.Instancia(Bancos.Itau);
 
                 default:
                     throw new ArgumentException($"Banco não implementado.");
             }
         }
 
-        private void PreencherDadosBeneficiario(DadosBeneficiario beneficiario)
+        private Beneficiario PreencherDadosBeneficiario(DadosBeneficiario beneficiario, Domain.Entities.ContaBancaria contaBancaria)
         {
-            _iBanco.Beneficiario.CPFCNPJ = beneficiario.CPFCNPJ;
-            _iBanco.Beneficiario.Nome = beneficiario.Nome;
-            _iBanco.Beneficiario.ContaBancaria.Agencia = beneficiario.ContaBancaria.Agencia;
-            _iBanco.Beneficiario.ContaBancaria.Conta = beneficiario.ContaBancaria.Conta;
-            _iBanco.Beneficiario.ContaBancaria.CarteiraPadrao = beneficiario.ContaBancaria.CarteiraPadrao;
-            _iBanco.Beneficiario.ContaBancaria.TipoCarteiraPadrao = TipoCarteira.CarteiraCobrancaSimples;
-            _iBanco.Beneficiario.ContaBancaria.TipoFormaCadastramento = TipoFormaCadastramento.ComRegistro;
-            _iBanco.Beneficiario.ContaBancaria.TipoImpressaoBoleto = TipoImpressaoBoleto.Empresa;
+            Beneficiario beneficiarioLibNetCore = new Beneficiario();
+
+            beneficiarioLibNetCore.CPFCNPJ = beneficiario.CPFCNPJ;
+            beneficiarioLibNetCore.Nome = beneficiario.Nome;
+            beneficiarioLibNetCore.ContaBancaria.Agencia = contaBancaria.Agencia;
+            beneficiarioLibNetCore.ContaBancaria.Conta = contaBancaria.Conta;
+            beneficiarioLibNetCore.ContaBancaria.CarteiraPadrao = contaBancaria.CarteiraPadrao;
+            beneficiarioLibNetCore.ContaBancaria.TipoCarteiraPadrao = TipoCarteira.CarteiraCobrancaSimples;
+            beneficiarioLibNetCore.ContaBancaria.TipoFormaCadastramento = TipoFormaCadastramento.ComRegistro;
+            beneficiarioLibNetCore.ContaBancaria.TipoImpressaoBoleto = TipoImpressaoBoleto.Empresa;
+
+            return beneficiarioLibNetCore;
         }
 
-        private Boleto GerarLayoutBoleto(IBanco iBanco, DadosBoleto dadosBoleto)
+        private Boleto GerarLayoutBoleto(IBanco iBanco, DadosBoleto dadosBoleto, Sacado sacado, DadosEndereco endereco)
         {
             var boleto = new Boleto(iBanco)
             {
-                Pagador = GerarPagador(dadosBoleto),
+                Pagador = DadosSacado(sacado, endereco),
                 DataEmissao = dadosBoleto.DataEmissao,
                 DataProcessamento = dadosBoleto.DataProcessamento,
                 DataVencimento = dadosBoleto.Vencimento,
@@ -112,25 +106,25 @@ namespace BoletoAPI.Infrastructure.Data.Repositories
                 ImprimirValoresAuxiliares = true
             };
 
-            boleto.ValidarDados();
+            //boleto.ValidarDados(); DADOS DE PRODUÇÃO ESSA LINHA DEVE SER DESCOMENTADA
             return boleto;
         }
 
-        private static Pagador GerarPagador(DadosBoleto dadosBoleto)
+        private static Pagador DadosSacado(Sacado sacado, DadosEndereco dadosEndereco)
         {
             return new Pagador
             {
-                Nome = dadosBoleto.Sacado.Nome,
-                CPFCNPJ = dadosBoleto.Sacado.Cpf,
+                Nome = sacado.Nome,
+                CPFCNPJ = sacado.Cpf,
 
                 Endereco = new Endereco
                 {
-                    LogradouroEndereco = dadosBoleto.Sacado.Endereco.Logradouro,
-                    LogradouroNumero = dadosBoleto.Sacado.Endereco.Numero,
-                    Bairro = dadosBoleto.Sacado.Endereco.Bairro,
-                    Cidade = dadosBoleto.Sacado.Endereco.Cidade,
-                    UF = dadosBoleto.Sacado.Endereco.Estado,
-                    CEP = dadosBoleto.Sacado.Endereco.CEP
+                    LogradouroEndereco = dadosEndereco.Logradouro,
+                    LogradouroNumero = dadosEndereco.Numero,
+                    Bairro = dadosEndereco.Bairro,
+                    Cidade = dadosEndereco.Cidade,
+                    UF = dadosEndereco.Estado,
+                    CEP = dadosEndereco.CEP
                 }
             };
         }
