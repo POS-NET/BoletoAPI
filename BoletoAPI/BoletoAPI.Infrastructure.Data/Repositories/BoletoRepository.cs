@@ -8,9 +8,8 @@ namespace BoletoAPI.Infrastructure.Data.Repositories
     {
         private IBanco _iBanco;
 
-        public BoletoRepository(IBanco iBanco)
+        public BoletoRepository()
         {
-            _iBanco = iBanco;
         }
 
         public string RetornarHTML(DadosBoleto dadosBoleto)
