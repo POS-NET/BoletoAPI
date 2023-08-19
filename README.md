@@ -1,10 +1,8 @@
 
 # 💸 API Boleto .NET
 
-A API .NET foi desenvolvido utilizando Clean Architecture com clean code.
-
-Essa estrutura de projeto consiste em utilizar uma biblioteca do projeto BoletoNetCore e para conhecer clique aqui.
-Basicamente temos uma endpoint que vai se comunicar com essa biblioteca e gerar o layout do boleto de vários bancos.
+A concepção da API .NET adotou os preceitos fundamentais da Clean Architecture, aliados à filosofia do clean code.
+O cerne deste projeto reside na estreita integração da biblioteca BoletoNetCore. Para um entendimento aprofundado da biblioteca, é possível acessar mais informações através deste [link](https://github.com/BoletoNet/BoletoNetCore). Simplificadamente, a estrutura do projeto é construída em torno de um endpoint central, estabelecendo uma comunicação precisa com a biblioteca mencionada. Tal abordagem possibilita a geração de layouts de boletos customizados, compatíveis com uma ampla gama de instituições bancárias.
 
 
 
@@ -45,31 +43,32 @@ O projeto inclui testes unitários para o back-end (.NET).
 ## 🤔 FAQ
 
 #### O que preciso para rodar essa API?
-R: Essa API foi desenvolvida utilizando o .NET 6 então precisa dessa versão e o Visual Studio 22 instalado na sua máquina.
+R: Esta API foi construída utilizando o .NET 6, portanto, é necessário ter essa versão do framework instalada, juntamente com o Visual Studio 2022, em sua máquina.
 
 #### Essa API consome com projeto?
-R: Essa api teve uma base do projeto BoletoNetCore e para conhecer acesse o link: https://github.com/BoletoNet/BoletoNetCore
+R: Essa API tem sua base fundamentada no projeto BoletoNetCore. Caso queira obter mais informações a respeito, você pode acessar o seguinte link: https://github.com/BoletoNet/BoletoNetCore
 
 #### Qual o canal de suporte?
-R: Esse projeto não tem um canal de suporte, então caso tenha algum problema por favor abra uma discução para virar tratar sobre o problema e se for o caso os administradores irão transforma em uma issue.
+R: ste projeto não dispõe de um canal de suporte direto. Caso você enfrente algum problema, por favor, inicie uma discussão para tratar da questão. Se necessário, os administradores poderão converter a discussão em um problema oficial (issue) para ser abordado.
 
 #### Por onde devo começar?
-R: Dentro do nosso REP analise as issues e comece a contribuir. 😉
+R: Dentro do nosso repositório, convidamos você a examinar as issues existentes e começar a contribuir de maneira construtiva. 😉
 
 #### Qual é o fluxo de desenvolvimento?
-R: Em nosso projeto existe dois tipos de branchs a main e a develop
-Para que possamos criar alguma melhoria em nosso códgio, vai ser preciso criar uma nova branch se baseando na branch de desenvolvimento com o nome de feature ex:
-
+R: Em nosso projeto, adotamos um modelo de gestão de código que compreende duas principais ramificações: 'main' e 'develop'. Para implementar melhorias em nosso código-base, segue-se um procedimento específico: a criação de uma nova ramificação baseada na branch 'develop', seguindo o padrão nomenclatural:
+```
 _feature/nome-da-issue_
+```
 
-Dessa forma conseguimos ter uma rastreabilidade das issues de funcionalidades.
-Caso precise ajustar algum bug, será preciso criar no seguinte padrão:
+Este padrão assegura uma rastreabilidade clara das issues correspondentes às funcionalidades propostas. No contexto de correção de erros, adotamos uma abordagem semelhante:
 
+```
 _hotfix/nome-da-issue_
+```
 
-Depois de finalizar crie suas PR para que possamos analisar, lembrando que as pull request devem ser feita olhando para a branch de desenvolvimento.
+Uma vez que suas contribuições estejam concluídas, solicitamos a criação de Pull Requests (PRs) para que possamos realizar uma avaliação minuciosa. Importante ressaltar que as PRs devem ser direcionadas à branch 'develop', refletindo nosso foco no desenvolvimento contínuo e colaborativo.
 
 ## ⚖️ Licença
 
-Este projeto é disponibilizado sob a licença MIT License. Essa licença permite o uso, a cópia, a modificação e a distribuição do código-fonte
+A presente iniciativa é disponibilizada mediante a licença MIT License, reconhecida por conferir um leque amplo de prerrogativas, englobando a permissão para utilização, replicação, modificação e distribuição do código-fonte com notável flexibilidade.
 
