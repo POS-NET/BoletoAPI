@@ -6,15 +6,12 @@ namespace BoletoAPI.Infrastructure.Data.Repositories
 {
     public class BoletoRepository : IBoletoRepository
     {
-        private readonly IBanco _iBanco;
-
-        public BoletoRepository(IBanco iBanco)
-        {
-            _iBanco = iBanco;
-        }
+        private IBanco _iBanco;
 
         public string RetornarHTML(DadosBoleto dadosBoleto)
         {
+            _iBanco = Banco.Instancia(Bancos.Itau);
+
             #region Dados do beneficiaio
 
             // Mapeamento de objetos
@@ -39,7 +36,7 @@ namespace BoletoAPI.Infrastructure.Data.Repositories
             return boletoBancario.MontaHtmlEmbedded();
         }
 
-        private static Boleto GerarLayoutBoleto(IBanco iBanco, DadosBoleto dadosBoleto)
+        private Boleto GerarLayoutBoleto(IBanco iBanco, DadosBoleto dadosBoleto)
         {
             var boleto = new Boleto(iBanco)
             {

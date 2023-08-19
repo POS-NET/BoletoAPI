@@ -4,6 +4,7 @@ using BoletoAPI.Domain.Interfaces;
 using BoletoAPI.Infrastructure.Data.Repositories;
 using BoletoAPI.Application.Interfaces;
 using BoletoAPI.Application.Services;
+using BoletoNetCore;
 
 namespace BoletoAPI.Infrastructure.CossCutting
 {
