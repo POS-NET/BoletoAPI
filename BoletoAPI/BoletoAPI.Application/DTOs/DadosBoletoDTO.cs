@@ -18,25 +18,32 @@ namespace BoletoAPI.Application.DTOs
 
         [Required(ErrorMessage = "Campo {0} é obrigatório.")]
         [DisplayName("Data de vencimento")]
-        public DateTime Vencimento { get; private set; } = DateTime.MinValue;
+        public DateTime Vencimento { get; set; } = DateTime.MinValue;
 
         [DisplayName("Campo Livre")]
-        public string? CampoLivre { get; private set; }
+        public string? CampoLivre { get; set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório.")]
         [Column(TypeName = "decimal(18,2)")]
         [DisplayFormat(DataFormatString = "{0:C2}")]
         [DataType(DataType.Currency)]
         [DisplayName("Valor")]
-        public decimal Valor { get; private set; } = decimal.Zero;
+        public decimal Valor { get; set; } = decimal.Zero;
 
         [Required(ErrorMessage = "Campo {0} é obrigatório.")]
         [DisplayName("Data Emissão")]
-        public DateTime DataEmissao { get; private set; } = DateTime.MinValue;
+        public DateTime DataEmissao { get; set; } = DateTime.MinValue;
 
         [Required(ErrorMessage = "Campo {0} é obrigatório.")]
         [DisplayName("Data Processamento")]
-        public DateTime DataProcessamento { get; private set; } = DateTime.MinValue;
+        public DateTime DataProcessamento { get; set; } = DateTime.MinValue;
+
+        [Required(ErrorMessage = "Campo {0} é obrigatório.")]
+        public string TipoBanco { get; set; } = string.Empty;
+
+        [Required(ErrorMessage = "Campo {0} é obrigatório.")]
+        [DisplayName("Número Documento")]
+        public string NumeroDocumento { get; set; } = string.Empty;
 
         #endregion Propriedades
 

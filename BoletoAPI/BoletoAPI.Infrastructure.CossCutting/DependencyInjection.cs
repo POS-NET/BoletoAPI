@@ -5,6 +5,7 @@ using BoletoAPI.Infrastructure.Data.Repositories;
 using BoletoAPI.Application.Interfaces;
 using BoletoAPI.Application.Services;
 using BoletoNetCore;
+using BoletoAPI.Application.Mappings;
 
 namespace BoletoAPI.Infrastructure.CossCutting
 {
@@ -15,6 +16,7 @@ namespace BoletoAPI.Infrastructure.CossCutting
             #region Repositórios
 
             services.AddScoped<IBoletoRepository, BoletoRepository>();
+            //services.AddScoped<IBanco, Banco>();
 
             #endregion Repositórios
 
@@ -26,7 +28,7 @@ namespace BoletoAPI.Infrastructure.CossCutting
 
             #region Configuração do AutoMapper
 
-            services.AddAutoMapper(typeof(DependencyInjection));
+            services.AddAutoMapper(typeof(DomainParaDTO));
 
             #endregion Configuração do AutoMapper
 
