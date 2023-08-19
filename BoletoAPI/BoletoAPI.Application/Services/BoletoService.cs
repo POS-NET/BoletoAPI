@@ -19,8 +19,13 @@ namespace BoletoAPI.Application.Services
 
         public async Task<string> GerarHTMLBoleto(DadosBoletoDTO dadosBoletoDTO)
         {
-            var gerarHtml = _mapper.Map<DadosBoleto>(dadosBoletoDTO);
-            return _iBoletoRepository.RetornarHTML(gerarHtml);
+            var mapearDadosBoleto = _mapper.Map<DadosBoleto>(dadosBoletoDTO);
+            var mapearDadosBeneficiario = _mapper.Map<DadosBeneficiario>(dadosBoletoDTO.BeneficiarioDTO);
+            var mapearContaBancaria = _mapper.Map<ContaBancaria>(dadosBoletoDTO.BeneficiarioDTO.ContaBancariaDTO);
+            var mapearDadosSacado = _mapper.Map<Sacado>(dadosBoletoDTO.SacadoDTO);
+            var mapearDadosEndereco = _mapper.Map<DadosEndereco>(dadosBoletoDTO.SacadoDTO.EnderecoDTO);
+
+            return _iBoletoRepository.RetornarHTML(mapearDadosBoleto, mapearDadosBeneficiario, mapearContaBancaria, mapearDadosSacado, mapearDadosEndereco);
         }
     }
 }
