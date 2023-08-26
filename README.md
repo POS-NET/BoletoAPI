@@ -6,6 +6,9 @@ O cerne deste projeto reside na estreita integração da biblioteca BoletoNetCor
 
 ![image](https://github.com/POS-NET/BoletoAPI/assets/99252640/7c9e722c-5620-4220-a646-070bd8f96f21)
 
+## 🔥 Importante
+
+Vomo funciona a estrutura da API? Vídeo explicativo: https://www.youtube.com/watch?v=abb0ArKzQuA
 
 ## 🧪 Teste
 
