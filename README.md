@@ -4,8 +4,7 @@
 A concepção da API .NET adotou os preceitos fundamentais da Clean Architecture, aliados à filosofia do clean code.
 O cerne deste projeto reside na estreita integração da biblioteca BoletoNetCore. Para um entendimento aprofundado da biblioteca, é possível acessar mais informações através deste [link](https://github.com/BoletoNet/BoletoNetCore). Simplificadamente, a estrutura do projeto é construída em torno de um endpoint central, estabelecendo uma comunicação precisa com a biblioteca mencionada. Tal abordagem possibilita a geração de layouts de boletos customizados, compatíveis com uma ampla gama de instituições bancárias.
 
-
-
+![image](https://github.com/POS-NET/BoletoAPI/assets/99252640/7c9e722c-5620-4220-a646-070bd8f96f21)
 
 
 ## 🧪 Teste
