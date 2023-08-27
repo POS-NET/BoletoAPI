@@ -1,17 +1,12 @@
 ﻿using BoletoAPI.Domain.Entities;
 using BoletoAPI.Domain.Interfaces;
 using BoletoNetCore;
-using System.Reflection.Metadata;
 
 namespace BoletoAPI.Infrastructure.Data.Repositories
 {
     public class BoletoRepository : IBoletoRepository
     {
         private IBanco _iBanco;
-
-        public BoletoRepository()
-        {
-        }
 
         public string RetornarHTML(DadosBoleto dadosBoleto, DadosBeneficiario dadosBeneficiario, Domain.Entities.ContaBancaria contaBancaria, Sacado sacado, DadosEndereco endereco)
         {
@@ -50,6 +45,7 @@ namespace BoletoAPI.Infrastructure.Data.Repositories
                     return Banco.Instancia(Bancos.Cecred);
 
                 case "Caixa":
+
                     return Banco.Instancia(Bancos.Caixa);
 
                 case "Bradesco":
@@ -103,7 +99,7 @@ namespace BoletoAPI.Infrastructure.Data.Repositories
                 ValorTitulo = dadosBoleto.Valor,
                 NumeroDocumento = dadosBoleto.NumeroDocumento,
                 EspecieDocumento = TipoEspecieDocumento.DS,
-                ImprimirValoresAuxiliares = true
+                ImprimirValoresAuxiliares = true,
             };
 
             //boleto.ValidarDados(); DADOS DE PRODUÇÃO ESSA LINHA DEVE SER DESCOMENTADA

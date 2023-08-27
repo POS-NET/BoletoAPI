@@ -7,8 +7,7 @@ namespace BoletoAPI.Application.DTOs
     {
         #region Propriedades
 
-        [DisplayName("Endereço Id")]
-        public int EnderecoId { get; set; }
+
 
         [Required(ErrorMessage = "O campo {0} é obrigatório.")]
         [DisplayName("CEP")]
