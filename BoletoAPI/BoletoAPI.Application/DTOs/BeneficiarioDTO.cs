@@ -7,8 +7,7 @@ namespace BoletoAPI.Application.DTOs
     {
         #region Propriedades
 
-        [DisplayName("Beneficiario Id")]
-        public int BeneficiarioId { get; set; }
+
 
         [Required(ErrorMessage = "O campo {0} é obrigatório.")]
         [DisplayName("Código")]
