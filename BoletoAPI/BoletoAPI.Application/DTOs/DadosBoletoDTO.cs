@@ -8,9 +8,6 @@ namespace BoletoAPI.Application.DTOs
     {
         #region Propriedades
 
-
-
-
         [Required(ErrorMessage = "Campo {0} é obrigatório.")]
         [DisplayName("Nosso Número")]
         public string NossoNumero { get; set; } = string.Empty;
